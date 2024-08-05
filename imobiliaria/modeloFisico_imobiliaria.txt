@@ -1,0 +1,102 @@
+CREATE TABLE proprietario (
+idproprietario int PRIMARY KEY,
+nome varchar[255],
+CPF varchar[255] unique,
+telefone varchar[20] unique,
+pix varchar[255],
+banco varchar[255],
+agenciavarchar[255],
+conta varchar[255],
+idendereco int
+)
+
+CREATE TABLE fiador (
+idfiador Texto(1) PRIMARY KEY auto_increment,
+nome varchar[255],
+telefone varchar[20],
+idendereco int
+)
+
+
+CREATE TABLE endereco (
+idendereco int PRIMARY KEY auto_increment,
+rua varchar[255],
+numero int,
+bairro varchar[255],
+cidade varchar[255],
+estado varchar[255],
+CEP int,
+complemento varchar[255]
+)
+
+CREATE TABLE imovel (
+idimovel int PRIMARY KEY auto_increment,
+banheiros int,
+comodos int,
+terreno varchar[255],
+suites int,
+preco decimal[7,2],
+quintal pit,
+garagem pit,
+lavanderia pit,
+areacontruida varchar[255],
+piscina bit,
+idproprietario int,
+idendereco int,
+FOREIGN KEY(idproprietario) REFERENCES proprietario (idproprietario),
+FOREIGN KEY(idendereco) REFERENCES endereco (idendereco)
+)
+
+CREATE TABLE corretor (
+idcorretor int PRIMARY KEY auto_increment,
+telefone varchar[255],
+nome varchar[255],
+email varchar[255],
+idimovel int,
+idendereco int
+)
+
+CREATE TABLE inquilino (
+idinquilino int PRIMARY KEY,
+telefone varchar[20],
+nome varchar[255],
+idimovel int,
+idfiador int,
+-- Erro: nome do campo duplicado nesta tabela!
+idfiador Texto(1)
+)
+
+
+CREATE TABLE contrato (
+codcontrato int PRIMARY KEY auto_increment,
+idinquilino int,
+prazo date,
+idcorretor int,
+aluguel decimal[7,2],
+inicio date,
+idimovel int,
+-- Erro: nome do campo duplicado nesta tabela!
+idcorretor int,
+-- Erro: nome do campo duplicado nesta tabela!
+idinquilino int,
+-- Erro: nome do campo duplicado nesta tabela!
+idimovel int
+)
+
+
+CREATE TABLE midia (
+foto varchar[255],
+idmidia int PRIMARY KEY,
+video varchar[255],
+idimovel int,
+FOREIGN KEY(idimovel) REFERENCES imovel (idimovel)
+)
+
+ALTER TABLE contrato ADD FOREIGN KEY(idcorretor) REFERENCES corretor (idcorretor)
+ALTER TABLE contrato ADD FOREIGN KEY(idinquilino) REFERENCES inquilino (idinquilino)
+ALTER TABLE contrato ADD FOREIGN KEY(idimovel) REFERENCES imovel (idimovel)
+ALTER TABLE inquilino ADD FOREIGN KEY(idfiador) REFERENCES fiador (idfiador)
+ALTER TABLE proprietario ADD FOREIGN KEY(idendereco) REFERENCES endereco (idendereco)
+ALTER TABLE fiador ADD FOREIGN KEY(idendereco) REFERENCES endereco (idendereco)
+ALTER TABLE corretor ADD FOREIGN KEY(idimovel) REFERENCES imovel (idimovel)
+ALTER TABLE corretor ADD FOREIGN KEY(idendereco) REFERENCES endereco (idendereco)
