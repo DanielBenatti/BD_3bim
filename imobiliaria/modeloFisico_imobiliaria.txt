@@ -1,102 +1,91 @@
-CREATE TABLE proprietario (
-idproprietario int PRIMARY KEY,
-nome varchar[255],
-CPF varchar[255] unique,
-telefone varchar[20] unique,
-pix varchar[255],
-banco varchar[255],
-agenciavarchar[255],
-conta varchar[255],
-idendereco int
-)
-
-CREATE TABLE fiador (
-idfiador Texto(1) PRIMARY KEY auto_increment,
-nome varchar[255],
-telefone varchar[20],
-idendereco int
-)
-
-
 CREATE TABLE endereco (
 idendereco int PRIMARY KEY auto_increment,
-rua varchar[255],
-numero int,
-bairro varchar[255],
-cidade varchar[255],
-estado varchar[255],
-CEP int,
-complemento varchar[255]
-)
+cidade varchar(255) not null,
+cep varchar(255) unique not null,
+numero int not null,
+rua varchar(255) not null,
+bairro varchar(255) not null,
+complemento varchar(255),
+estado varchar(255) not null
+);
 
-CREATE TABLE imovel (
-idimovel int PRIMARY KEY auto_increment,
-banheiros int,
-comodos int,
-terreno varchar[255],
-suites int,
-preco decimal[7,2],
-quintal pit,
-garagem pit,
-lavanderia pit,
-areacontruida varchar[255],
-piscina bit,
-idproprietario int,
-idendereco int,
-FOREIGN KEY(idproprietario) REFERENCES proprietario (idproprietario),
-FOREIGN KEY(idendereco) REFERENCES endereco (idendereco)
-)
+CREATE TABLE midias (
+idmidida int PRIMARY KEY auto_increment,
+midia varchar(255) not null
+);
+
+CREATE TABLE inquilino (
+idinquilino int PRIMARY KEY auto_increment,
+rg varchar(255) unique,
+fiador varchar(255) not null,
+telefone varchar(255),
+nome varchar(255) not null,
+email varchar(255) unique not null,
+cpf varchar(255) unique not null
+);
 
 CREATE TABLE corretor (
 idcorretor int PRIMARY KEY auto_increment,
-telefone varchar[255],
-nome varchar[255],
-email varchar[255],
-idimovel int,
-idendereco int
-)
+email varchar(255) unique not null,
+telefone varchar(255),
+nome varchar(255) not null
+);
 
-CREATE TABLE inquilino (
-idinquilino int PRIMARY KEY,
-telefone varchar[20],
-nome varchar[255],
-idimovel int,
-idfiador int,
--- Erro: nome do campo duplicado nesta tabela!
-idfiador Texto(1)
-)
-
-
-CREATE TABLE contrato (
-codcontrato int PRIMARY KEY auto_increment,
+CREATE TABLE fiador (
+idfiador int PRIMARY KEY auto_increment,
+email varchar(255) unique not null,
+telefone varchar(255),
+rg varchar(255) unique,
+cpf varchar(255) unique not null,
+nome varchar(255) not null,
+idendereco int,
 idinquilino int,
-prazo date,
-idcorretor int,
-aluguel decimal[7,2],
-inicio date,
-idimovel int,
--- Erro: nome do campo duplicado nesta tabela!
-idcorretor int,
--- Erro: nome do campo duplicado nesta tabela!
+FOREIGN KEY(idendereco) REFERENCES endereco (idendereco),
+FOREIGN KEY(idinquilino) REFERENCES inquilino (idinquilino)
+);
+
+CREATE TABLE proprietario (
+idproprietario int PRIMARY KEY auto_increment,
+email varchar(255) unique not null,
+telefone varchar(255),
+nome varchar(255) not null,
+pix varchar(255) unique,
+banco varchar(255),
+agencia varchar(255) not null,
+idendereco int,
+FOREIGN KEY(idendereco) REFERENCES endereco (idendereco)
+);
+
+CREATE TABLE imovel (
+idimovel int PRIMARY KEY auto_increment,
+disponivel bit not null,
+area bit not null,
+suite bit not null,
+nbanheiros int not null,
+tipo varchar(255) not null,
+garagem bit not null,
+lavanderia bit not null,
+piscina bit not null,
+comodos bit not null,
+idmidida int,
+idproprietario int,
+idendereco int,
+FOREIGN KEY(idproprietario) REFERENCES proprietario (idproprietario),
+FOREIGN KEY(idendereco) REFERENCES endereco (idendereco),
+FOREIGN KEY(idmidida) REFERENCES midias (idmidida)
+);
+
+CREATE TABLE aluguel (
+codaluguel int PRIMARY KEY auto_increment,
+datafim date not null,
+datainicio date not null,
+descricao varchar(255) not null,
+valor float(4,2) not null,
+vencimento date not null,
 idinquilino int,
--- Erro: nome do campo duplicado nesta tabela!
-idimovel int
-)
-
-
-CREATE TABLE midia (
-foto varchar[255],
-idmidia int PRIMARY KEY,
-video varchar[255],
+idcorretor int,
 idimovel int,
+FOREIGN KEY(idinquilino) REFERENCES inquilino (idinquilino),
+FOREIGN KEY(idcorretor) REFERENCES corretor (idcorretor),
 FOREIGN KEY(idimovel) REFERENCES imovel (idimovel)
-)
-
-ALTER TABLE contrato ADD FOREIGN KEY(idcorretor) REFERENCES corretor (idcorretor)
-ALTER TABLE contrato ADD FOREIGN KEY(idinquilino) REFERENCES inquilino (idinquilino)
-ALTER TABLE contrato ADD FOREIGN KEY(idimovel) REFERENCES imovel (idimovel)
-ALTER TABLE inquilino ADD FOREIGN KEY(idfiador) REFERENCES fiador (idfiador)
-ALTER TABLE proprietario ADD FOREIGN KEY(idendereco) REFERENCES endereco (idendereco)
-ALTER TABLE fiador ADD FOREIGN KEY(idendereco) REFERENCES endereco (idendereco)
-ALTER TABLE corretor ADD FOREIGN KEY(idimovel) REFERENCES imovel (idimovel)
-ALTER TABLE corretor ADD FOREIGN KEY(idendereco) REFERENCES endereco (idendereco)
+);
