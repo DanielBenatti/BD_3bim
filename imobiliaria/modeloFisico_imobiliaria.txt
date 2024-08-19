@@ -18,7 +18,7 @@ CREATE TABLE inquilino (
 idinquilino int PRIMARY KEY auto_increment,
 rg varchar(255) unique,
 fiador varchar(255) not null,
-telefone varchar(255),
+telefone varchar(20),
 nome varchar(255) not null,
 email varchar(255) unique not null,
 cpf varchar(255) unique not null
@@ -27,14 +27,14 @@ cpf varchar(255) unique not null
 CREATE TABLE corretor (
 idcorretor int PRIMARY KEY auto_increment,
 email varchar(255) unique not null,
-telefone varchar(255),
+telefone varchar(20),
 nome varchar(255) not null
 );
 
 CREATE TABLE fiador (
 idfiador int PRIMARY KEY auto_increment,
 email varchar(255) unique not null,
-telefone varchar(255),
+telefone varchar(20),
 rg varchar(255) unique,
 cpf varchar(255) unique not null,
 nome varchar(255) not null,
@@ -47,7 +47,7 @@ FOREIGN KEY(idinquilino) REFERENCES inquilino (idinquilino)
 CREATE TABLE proprietario (
 idproprietario int PRIMARY KEY auto_increment,
 email varchar(255) unique not null,
-telefone varchar(255),
+telefone varchar(20),
 nome varchar(255) not null,
 pix varchar(255) unique,
 banco varchar(255),
@@ -59,10 +59,10 @@ FOREIGN KEY(idendereco) REFERENCES endereco (idendereco)
 CREATE TABLE imovel (
 idimovel int PRIMARY KEY auto_increment,
 disponivel bit not null,
-area bit not null,
+area varchar(255) not null,
 suite bit not null,
-nbanheiros int not null,
-tipo varchar(255) not null,
+banheiros int not null,
+complemento varchar(255) not null,
 garagem bit not null,
 lavanderia bit not null,
 piscina bit not null,
