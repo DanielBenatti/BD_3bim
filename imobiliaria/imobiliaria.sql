@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 19-Ago-2024 às 14:03
+-- Tempo de geração: 26-Ago-2024 às 14:00
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -40,6 +40,22 @@ CREATE TABLE `aluguel` (
   `idcorretor` int(11) DEFAULT NULL,
   `idimovel` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Extraindo dados da tabela `aluguel`
+--
+
+INSERT INTO `aluguel` (`codaluguel`, `datafim`, `datainicio`, `descricao`, `valor`, `vencimento`, `idinquilino`, `idcorretor`, `idimovel`) VALUES
+(11, '2024-09-30', '2024-08-01', 'Aluguel de apartamento 101', 99.99, '2024-09-01', 1, 1, 1),
+(12, '2024-10-31', '2024-08-15', 'Aluguel de casa 02', 99.99, '2024-10-01', 2, 2, 2),
+(13, '2024-09-30', '2024-08-01', 'Aluguel de apartamento 303', 99.99, '2024-09-01', 3, 3, 3),
+(14, '2024-10-31', '2024-08-20', 'Aluguel de casa com quintal', 99.99, '2024-10-01', 4, 4, 4),
+(15, '2024-11-30', '2024-09-01', 'Aluguel de cobertura', 99.99, '2024-11-01', 5, 5, 5),
+(16, '2024-09-30', '2024-08-15', 'Aluguel de apartamento 202', 99.99, '2024-09-01', 6, 6, 6),
+(17, '2024-10-31', '2024-09-01', 'Aluguel de casa de campo', 99.99, '2024-10-01', 7, 7, 7),
+(18, '2024-11-30', '2024-09-15', 'Aluguel de apartamento 403', 99.99, '2024-11-01', 8, 8, 8),
+(19, '2024-09-30', '2024-08-01', 'Aluguel de casa 12', 99.99, '2024-09-01', 9, 9, 9),
+(20, '2024-10-31', '2024-09-01', 'Aluguel de apartamento duplex', 99.99, '2024-10-01', 10, 10, 10);
 
 -- --------------------------------------------------------
 
@@ -92,16 +108,16 @@ CREATE TABLE `endereco` (
 --
 
 INSERT INTO `endereco` (`idendereco`, `cidade`, `cep`, `numero`, `rua`, `bairro`, `complemento`, `estado`) VALUES
-(1, 'Ribeirâo Pires', '09454-230', 12, 'Palmital', 'Jardim Verão', 'Casa', 'São Paulo'),
-(2, 'Ribeirâo Peres', '53564-752', 164, 'Azeitonos', 'Quintal Outono', 'Casa', 'São Paulo'),
-(3, 'Ribeirâo Pines', '98534-213', 45, 'Pepinoses', 'Garagem Inverno', 'Casa', 'São Paulo'),
-(4, 'Ribeirâo Cires', '24541-761', 98, 'Calabresos', 'Calçada Primavera', 'Casa', 'São Paulo'),
-(5, 'Ribeirâo Ceris', '43898-647', 340, 'Tomatos', 'Riacho de Fevereiro', 'Apartamento', 'São Paulo'),
-(6, 'Ribeirâo Ripes', '73654-588', 720, 'Ceboloide', 'Marés de Abril', 'Casa', 'São Paulo'),
-(7, 'Ribeirâo Renes', '28764-124', 86, 'Couveiros', 'Ondas de Março', 'Casa', 'Minas Gerais'),
-(8, 'Ribeirâo Sires', '92235-432', 699, 'Pierão', 'Aquifero de Maio', 'Casa', 'São Paulo'),
-(9, 'Ribeirâo Cines', '54323-987', 236, 'Salamenses', 'Lagoa de Junho', 'Casa', 'Paraná'),
-(10, 'Ribeirâo Penis', '09434-580', 33, 'Dragonaits', 'Poça de Julho', 'Casa', 'São Paulo');
+(1, 'São Paulo', '01000-000', 123, 'Rua A', 'Bairro Centro', 'Apto 101', 'SP'),
+(2, 'Rio de Janeiro', '20000-000', 456, 'Avenida B', 'Bairro Flamengo', '', 'RJ'),
+(3, 'Belo Horizonte', '30100-000', 789, 'Rua C', 'Bairro Savassi', 'Bloco B', 'MG'),
+(4, 'Porto Alegre', '90000-000', 101, 'Avenida D', 'Bairro Centro', 'Casa 12', 'RS'),
+(5, 'Curitiba', '80000-000', 202, 'Rua E', 'Bairro Batel', '', 'PR'),
+(6, 'Recife', '50000-000', 303, 'Avenida F', 'Bairro Boa Viagem', 'Sala 5', 'PE'),
+(7, 'Fortaleza', '60000-000', 404, 'Rua G', 'Bairro Aldeota', 'Prédio 3', 'CE'),
+(8, 'Salvador', '40000-000', 505, 'Avenida H', 'Bairro Barra', '', 'BA'),
+(9, 'Brasília', '70000-000', 606, 'Rua I', 'Bairro Asa Norte', 'Conjunto 7', 'DF'),
+(10, 'Manaus', '69000-000', 707, 'Avenida J', 'Bairro Centro', '', 'AM');
 
 -- --------------------------------------------------------
 
@@ -120,6 +136,22 @@ CREATE TABLE `fiador` (
   `idinquilino` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+--
+-- Extraindo dados da tabela `fiador`
+--
+
+INSERT INTO `fiador` (`idfiador`, `email`, `telefone`, `rg`, `cpf`, `nome`, `idendereco`, `idinquilino`) VALUES
+(1, 'jose.silva@exemplo.com', '11987654321', '123456789', '123.456.789-00', 'José Silva', 1, 1),
+(2, 'maria.souza@exemplo.com', '11987654322', '234567890', '234.567.890-01', 'Maria Souza', 2, 2),
+(3, 'joao.pereira@exemplo.com', '11987654323', '345678901', '345.678.901-02', 'João Pereira', 3, 3),
+(4, 'ana.lima@exemplo.com', '11987654324', '456789012', '456.789.012-03', 'Ana Lima', 4, 4),
+(5, 'carlos.oliveira@exemplo.com', '11987654325', '567890123', '567.890.123-04', 'Carlos Oliveira', 5, 5),
+(6, 'lucas.martins@exemplo.com', '11987654326', '678901234', '678.901.234-05', 'Lucas Martins', 6, 6),
+(7, 'patricia.almeida@exemplo.com', '11987654327', '789012345', '789.012.345-06', 'Patrícia Almeida', 7, 7),
+(8, 'fernando.rodrigues@exemplo.com', '11987654328', '890123456', '890.123.456-07', 'Fernando Rodrigues', 8, 8),
+(9, 'juliana.gomes@exemplo.com', '11987654329', '901234567', '901.234.567-08', 'Juliana Gomes', 9, 9),
+(10, 'ricardo.santos@exemplo.com', '11987654330', '012345678', '012.345.678-09', 'Ricardo Santos', 10, 10);
+
 -- --------------------------------------------------------
 
 --
@@ -136,11 +168,37 @@ CREATE TABLE `imovel` (
   `garagem` bit(1) NOT NULL,
   `lavanderia` bit(1) NOT NULL,
   `piscina` bit(1) NOT NULL,
-  `comodos` bit(1) NOT NULL,
+  `comodos` int(11) NOT NULL,
   `idmidida` int(11) DEFAULT NULL,
   `idproprietario` int(11) DEFAULT NULL,
   `idendereco` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Extraindo dados da tabela `imovel`
+--
+
+INSERT INTO `imovel` (`idimovel`, `disponivel`, `area`, `suite`, `banheiros`, `complemento`, `garagem`, `lavanderia`, `piscina`, `comodos`, `idmidida`, `idproprietario`, `idendereco`) VALUES
+(1, b'1', '120 m²', b'1', 2, 'Apto 101', b'1', b'1', b'0', 1, 1, 1, 1),
+(2, b'0', '80 m²', b'0', 1, 'Casa 02', b'0', b'1', b'1', 0, 2, 2, 2),
+(3, b'1', '150 m²', b'1', 3, 'Bloco B - Apt 303', b'1', b'0', b'1', 1, 3, 3, 3),
+(4, b'1', '100 m²', b'0', 2, 'Casa com quintal', b'1', b'1', b'0', 1, 4, 4, 4),
+(5, b'0', '200 m²', b'1', 4, 'Apartamento Cobertura', b'1', b'1', b'1', 2, 5, 5, 5),
+(6, b'1', '90 m²', b'1', 1, 'Apto 202', b'0', b'1', b'0', 1, 6, 6, 6),
+(7, b'0', '110 m²', b'0', 2, 'Casa de Campo', b'1', b'0', b'0', 2, 7, 7, 7),
+(8, b'1', '140 m²', b'1', 3, 'Apto 403', b'1', b'1', b'1', 2, 8, 8, 8),
+(9, b'1', '70 m²', b'0', 1, 'Casa 12', b'0', b'1', b'0', 1, 9, 9, 9),
+(10, b'0', '180 m²', b'1', 3, 'Apartamento Duplex', b'1', b'0', b'1', 2, 10, 10, 10),
+(11, b'1', '120 m²', b'1', 2, 'Apartamento 101', b'1', b'1', b'0', 3, 1, 1, 1),
+(12, b'0', '80 m²', b'0', 1, 'Casa 5', b'1', b'1', b'1', 2, 2, 2, 2),
+(13, b'1', '150 m²', b'1', 3, 'Cobertura 202', b'1', b'0', b'1', 5, 3, 3, 3),
+(14, b'1', '90 m²', b'1', 1, 'Casa 8', b'0', b'1', b'0', 4, 4, 4, 4),
+(15, b'0', '200 m²', b'1', 4, 'Apartamento 303', b'1', b'1', b'1', 6, 5, 5, 5),
+(16, b'1', '110 m²', b'1', 2, 'Apartamento 404', b'1', b'1', b'0', 4, 6, 6, 6),
+(17, b'0', '95 m²', b'1', 1, 'Casa 10', b'1', b'0', b'0', 3, 7, 7, 7),
+(18, b'1', '130 m²', b'1', 2, 'Cobertura 505', b'1', b'1', b'1', 5, 8, 8, 8),
+(19, b'1', '70 m²', b'0', 1, 'Apartamento 606', b'0', b'1', b'0', 3, 9, 9, 9),
+(20, b'1', '160 m²', b'1', 3, 'Casa 12', b'1', b'1', b'1', 6, 10, 10, 10);
 
 -- --------------------------------------------------------
 
@@ -185,6 +243,22 @@ CREATE TABLE `midias` (
   `midia` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+--
+-- Extraindo dados da tabela `midias`
+--
+
+INSERT INTO `midias` (`idmidida`, `midia`) VALUES
+(1, 'foto_externa_1.jpg'),
+(2, 'foto_interna_1.jpg'),
+(3, 'foto_quarto_1.jpg'),
+(4, 'foto_sala_1.jpg'),
+(5, 'foto_cozinha_1.jpg'),
+(6, 'foto_externa_2.jpg'),
+(7, 'foto_interna_2.jpg'),
+(8, 'foto_quarto_2.jpg'),
+(9, 'foto_sala_2.jpg'),
+(10, 'foto_cozinha_2.jpg');
+
 -- --------------------------------------------------------
 
 --
@@ -201,6 +275,22 @@ CREATE TABLE `proprietario` (
   `agencia` varchar(255) NOT NULL,
   `idendereco` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Extraindo dados da tabela `proprietario`
+--
+
+INSERT INTO `proprietario` (`idproprietario`, `email`, `telefone`, `nome`, `pix`, `banco`, `agencia`, `idendereco`) VALUES
+(1, 'jose.silva@example.com', '1234567890', 'José Silva', '12345678901', 'Banco do Brasil', '001', 1),
+(2, 'maria.souza@example.com', '2345678901', 'Maria Souza', '23456789012', 'Bradesco', '002', 2),
+(3, 'joao.pereira@example.com', '3456789012', 'João Pereira', '34567890123', 'Itaú', '003', 3),
+(4, 'ana.lima@example.com', '4567890123', 'Ana Lima', '45678901234', 'Santander', '004', 4),
+(5, 'carlos.oliveira@example.com', '5678901234', 'Carlos Oliveira', '56789012345', 'Caixa Econômica Federal', '005', 5),
+(6, 'lucas.martins@example.com', '6789012345', 'Lucas Martins', '67890123456', 'HSBC', '006', 6),
+(7, 'patricia.almeida@example.com', '7890123456', 'Patrícia Almeida', '78901234567', 'Banco do Brasil', '007', 7),
+(8, 'fernando.rodrigues@example.com', '8901234567', 'Fernando Rodrigues', '89012345678', 'Bradesco', '008', 8),
+(9, 'juliana.gomes@example.com', '9012345678', 'Juliana Gomes', '90123456789', 'Itaú', '009', 9),
+(10, 'ricardo.santos@example.com', '0123456789', 'Ricardo Santos', '01234567890', 'Santander', '010', 10);
 
 --
 -- Índices para tabelas despejadas
@@ -281,7 +371,7 @@ ALTER TABLE `proprietario`
 -- AUTO_INCREMENT de tabela `aluguel`
 --
 ALTER TABLE `aluguel`
-  MODIFY `codaluguel` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `codaluguel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de tabela `corretor`
@@ -299,13 +389,13 @@ ALTER TABLE `endereco`
 -- AUTO_INCREMENT de tabela `fiador`
 --
 ALTER TABLE `fiador`
-  MODIFY `idfiador` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idfiador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `imovel`
 --
 ALTER TABLE `imovel`
-  MODIFY `idimovel` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idimovel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de tabela `inquilino`
@@ -317,13 +407,13 @@ ALTER TABLE `inquilino`
 -- AUTO_INCREMENT de tabela `midias`
 --
 ALTER TABLE `midias`
-  MODIFY `idmidida` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idmidida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `proprietario`
 --
 ALTER TABLE `proprietario`
-  MODIFY `idproprietario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idproprietario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Restrições para despejos de tabelas
