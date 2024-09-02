@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 26-Ago-2024 às 14:00
+-- Tempo de geração: 02-Set-2024 às 14:08
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -171,34 +171,35 @@ CREATE TABLE `imovel` (
   `comodos` int(11) NOT NULL,
   `idmidida` int(11) DEFAULT NULL,
   `idproprietario` int(11) DEFAULT NULL,
-  `idendereco` int(11) DEFAULT NULL
+  `idendereco` int(11) DEFAULT NULL,
+  `condominio` bit(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Extraindo dados da tabela `imovel`
 --
 
-INSERT INTO `imovel` (`idimovel`, `disponivel`, `area`, `suite`, `banheiros`, `complemento`, `garagem`, `lavanderia`, `piscina`, `comodos`, `idmidida`, `idproprietario`, `idendereco`) VALUES
-(1, b'1', '120 m²', b'1', 2, 'Apto 101', b'1', b'1', b'0', 1, 1, 1, 1),
-(2, b'0', '80 m²', b'0', 1, 'Casa 02', b'0', b'1', b'1', 0, 2, 2, 2),
-(3, b'1', '150 m²', b'1', 3, 'Bloco B - Apt 303', b'1', b'0', b'1', 1, 3, 3, 3),
-(4, b'1', '100 m²', b'0', 2, 'Casa com quintal', b'1', b'1', b'0', 1, 4, 4, 4),
-(5, b'0', '200 m²', b'1', 4, 'Apartamento Cobertura', b'1', b'1', b'1', 2, 5, 5, 5),
-(6, b'1', '90 m²', b'1', 1, 'Apto 202', b'0', b'1', b'0', 1, 6, 6, 6),
-(7, b'0', '110 m²', b'0', 2, 'Casa de Campo', b'1', b'0', b'0', 2, 7, 7, 7),
-(8, b'1', '140 m²', b'1', 3, 'Apto 403', b'1', b'1', b'1', 2, 8, 8, 8),
-(9, b'1', '70 m²', b'0', 1, 'Casa 12', b'0', b'1', b'0', 1, 9, 9, 9),
-(10, b'0', '180 m²', b'1', 3, 'Apartamento Duplex', b'1', b'0', b'1', 2, 10, 10, 10),
-(11, b'1', '120 m²', b'1', 2, 'Apartamento 101', b'1', b'1', b'0', 3, 1, 1, 1),
-(12, b'0', '80 m²', b'0', 1, 'Casa 5', b'1', b'1', b'1', 2, 2, 2, 2),
-(13, b'1', '150 m²', b'1', 3, 'Cobertura 202', b'1', b'0', b'1', 5, 3, 3, 3),
-(14, b'1', '90 m²', b'1', 1, 'Casa 8', b'0', b'1', b'0', 4, 4, 4, 4),
-(15, b'0', '200 m²', b'1', 4, 'Apartamento 303', b'1', b'1', b'1', 6, 5, 5, 5),
-(16, b'1', '110 m²', b'1', 2, 'Apartamento 404', b'1', b'1', b'0', 4, 6, 6, 6),
-(17, b'0', '95 m²', b'1', 1, 'Casa 10', b'1', b'0', b'0', 3, 7, 7, 7),
-(18, b'1', '130 m²', b'1', 2, 'Cobertura 505', b'1', b'1', b'1', 5, 8, 8, 8),
-(19, b'1', '70 m²', b'0', 1, 'Apartamento 606', b'0', b'1', b'0', 3, 9, 9, 9),
-(20, b'1', '160 m²', b'1', 3, 'Casa 12', b'1', b'1', b'1', 6, 10, 10, 10);
+INSERT INTO `imovel` (`idimovel`, `disponivel`, `area`, `suite`, `banheiros`, `complemento`, `garagem`, `lavanderia`, `piscina`, `comodos`, `idmidida`, `idproprietario`, `idendereco`, `condominio`) VALUES
+(1, b'1', '120 m²', b'1', 2, 'Apto 101', b'1', b'1', b'0', 1, 1, 1, 1, b'1'),
+(2, b'0', '80 m²', b'0', 1, 'Casa 02', b'0', b'1', b'1', 0, 2, 2, 2, b'0'),
+(3, b'1', '150 m²', b'1', 3, 'Bloco B - Apt 303', b'1', b'0', b'1', 1, 3, 3, 3, b'0'),
+(4, b'1', '100 m²', b'0', 2, 'Casa com quintal', b'1', b'1', b'0', 1, 4, 4, 4, b'0'),
+(5, b'0', '200 m²', b'1', 4, 'Apartamento Cobertura', b'1', b'1', b'1', 2, 5, 5, 5, b'0'),
+(6, b'1', '90 m²', b'1', 1, 'Apto 202', b'0', b'1', b'0', 1, 6, 6, 6, b'0'),
+(7, b'0', '110 m²', b'0', 2, 'Casa de Campo', b'1', b'0', b'0', 2, 7, 7, 7, b'0'),
+(8, b'1', '140 m²', b'1', 3, 'Apto 403', b'1', b'1', b'1', 2, 8, 8, 8, b'0'),
+(9, b'1', '70 m²', b'0', 1, 'Casa 12', b'0', b'1', b'0', 1, 9, 9, 9, b'0'),
+(10, b'0', '180 m²', b'1', 3, 'Apartamento Duplex', b'1', b'0', b'1', 2, 10, 10, 10, b'0'),
+(11, b'1', '120 m²', b'1', 2, 'Apartamento 101', b'1', b'1', b'0', 3, 1, 1, 1, b'0'),
+(12, b'0', '80 m²', b'0', 1, 'Casa 5', b'1', b'1', b'1', 2, 2, 2, 2, b'0'),
+(13, b'1', '150 m²', b'1', 3, 'Cobertura 202', b'1', b'0', b'1', 5, 3, 3, 3, b'0'),
+(14, b'1', '90 m²', b'1', 1, 'Casa 8', b'0', b'1', b'0', 4, 4, 4, 4, b'0'),
+(15, b'0', '200 m²', b'1', 4, 'Apartamento 303', b'1', b'1', b'1', 6, 5, 5, 5, b'0'),
+(16, b'1', '110 m²', b'1', 2, 'Apartamento 404', b'1', b'1', b'0', 4, 6, 6, 6, b'0'),
+(17, b'0', '95 m²', b'1', 1, 'Casa 10', b'1', b'0', b'0', 3, 7, 7, 7, b'0'),
+(18, b'1', '130 m²', b'1', 2, 'Cobertura 505', b'1', b'1', b'1', 5, 8, 8, 8, b'0'),
+(19, b'1', '70 m²', b'0', 1, 'Apartamento 606', b'0', b'1', b'0', 3, 9, 9, 9, b'0'),
+(20, b'1', '160 m²', b'1', 3, 'Casa 12', b'1', b'1', b'1', 6, 10, 10, 10, b'0');
 
 -- --------------------------------------------------------
 
@@ -213,24 +214,26 @@ CREATE TABLE `inquilino` (
   `telefone` varchar(20) DEFAULT NULL,
   `nome` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `cpf` varchar(255) NOT NULL
+  `cpf` varchar(255) NOT NULL,
+  `datanasc` date DEFAULT NULL,
+  `salario` decimal(7,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Extraindo dados da tabela `inquilino`
 --
 
-INSERT INTO `inquilino` (`idinquilino`, `rg`, `fiador`, `telefone`, `nome`, `email`, `cpf`) VALUES
-(1, '34.423.762-4', 'Aline Dantas', '(11)98432-0385', 'Enzo Kingler', 'enzinhorei2@gmail.com', '453.534.234-97'),
-(2, '75.586.678-6', 'Bruno Sorrisos', '(11)95478-4820', 'Sem Matas', 'noflorest12345678@outlook.com', '798.432.651-04'),
-(3, '83.674.134-9', 'Bruno Zollotareff', '(11)23456-9837', 'Anna Delphine', 'beladopovo@gmail.com', '653.098.321-65'),
-(4, '58.347.723-1', 'João Morango', '(11)24383-8731', 'Big Paulos', 'ograndepau@gmail.com', '437.375.127-45'),
-(5, '92.432.673-3', 'Enzo Caetano', '(11)63522-6544', 'Pedrão Pedreiro', 'pedr0carn3s@hotmail.com', '324.468.236-53'),
-(6, '93.524.452-5', 'Casepirro Gabriel', '(11)27685-8552', 'Boliviano de Nascença', 'muril0bet4@gmail.com', '423.368.269-42'),
-(7, '72.364.921-2', 'Monark Kevyn', '(11)24658-7328', 'Small Mari', 'fofadodani2@etec.sp.gov.br', '258.137.342-76'),
-(8, '37.254.912-7', 'Alexandre de Moraes', '(11)90813-5272', 'Lucas Mortandela', 'cabritotev3z@gmail,com', '345.872.537-52'),
-(9, '82.649.134-6', 'Letícia Brisas', '(11)94264-7242', 'Wesley Safadão', 'reidelas@gmail.com', '539.525.234-43'),
-(10, '57.234.815-8', 'Iago Dormes', '(11)96420-6735', 'NakaNaka Mura Mura', 'matadordejegue@etec.sp.gov.br', '524.616.198-67');
+INSERT INTO `inquilino` (`idinquilino`, `rg`, `fiador`, `telefone`, `nome`, `email`, `cpf`, `datanasc`, `salario`) VALUES
+(1, '34.423.762-4', 'Aline Dantas', '(11)98432-0385', 'Enzo Kingler', 'enzinhorei2@gmail.com', '453.534.234-97', '1995-01-01', '1800.00'),
+(2, '75.586.678-6', 'Bruno Sorrisos', '(11)95478-4820', 'Sem Matas', 'noflorest12345678@outlook.com', '798.432.651-04', '1996-02-02', '2200.00'),
+(3, '83.674.134-9', 'Bruno Zollotareff', '(11)23456-9837', 'Anna Delphine', 'beladopovo@gmail.com', '653.098.321-65', '1997-03-03', '2750.00'),
+(4, '58.347.723-1', 'João Morango', '(11)24383-8731', 'Big Paulos', 'ograndepau@gmail.com', '437.375.127-45', '1998-04-04', '3300.00'),
+(5, '92.432.673-3', 'Enzo Caetano', '(11)63522-6544', 'Pedrão Pedreiro', 'pedr0carn3s@hotmail.com', '324.468.236-53', '1999-05-05', '3800.00'),
+(6, '93.524.452-5', 'Casepirro Gabriel', '(11)27685-8552', 'Boliviano de Nascença', 'muril0bet4@gmail.com', '423.368.269-42', '2000-06-06', '2600.00'),
+(7, '72.364.921-2', 'Monark Kevyn', '(11)24658-7328', 'Small Mari', 'fofadodani2@etec.sp.gov.br', '258.137.342-76', '2001-07-07', '3400.00'),
+(8, '37.254.912-7', 'Alexandre de Moraes', '(11)90813-5272', 'Lucas Mortandela', 'cabritotev3z@gmail,com', '345.872.537-52', '2002-08-08', '2900.00'),
+(9, '82.649.134-6', 'Letícia Brisas', '(11)94264-7242', 'Wesley Safadão', 'reidelas@gmail.com', '539.525.234-43', '2003-09-09', '4000.00'),
+(10, '57.234.815-8', 'Iago Dormes', '(11)96420-6735', 'NakaNaka Mura Mura', 'matadordejegue@etec.sp.gov.br', '524.616.198-67', '2004-10-10', '3150.00');
 
 -- --------------------------------------------------------
 
@@ -281,16 +284,16 @@ CREATE TABLE `proprietario` (
 --
 
 INSERT INTO `proprietario` (`idproprietario`, `email`, `telefone`, `nome`, `pix`, `banco`, `agencia`, `idendereco`) VALUES
-(1, 'jose.silva@example.com', '1234567890', 'José Silva', '12345678901', 'Banco do Brasil', '001', 1),
-(2, 'maria.souza@example.com', '2345678901', 'Maria Souza', '23456789012', 'Bradesco', '002', 2),
-(3, 'joao.pereira@example.com', '3456789012', 'João Pereira', '34567890123', 'Itaú', '003', 3),
-(4, 'ana.lima@example.com', '4567890123', 'Ana Lima', '45678901234', 'Santander', '004', 4),
-(5, 'carlos.oliveira@example.com', '5678901234', 'Carlos Oliveira', '56789012345', 'Caixa Econômica Federal', '005', 5),
-(6, 'lucas.martins@example.com', '6789012345', 'Lucas Martins', '67890123456', 'HSBC', '006', 6),
-(7, 'patricia.almeida@example.com', '7890123456', 'Patrícia Almeida', '78901234567', 'Banco do Brasil', '007', 7),
-(8, 'fernando.rodrigues@example.com', '8901234567', 'Fernando Rodrigues', '89012345678', 'Bradesco', '008', 8),
-(9, 'juliana.gomes@example.com', '9012345678', 'Juliana Gomes', '90123456789', 'Itaú', '009', 9),
-(10, 'ricardo.santos@example.com', '0123456789', 'Ricardo Santos', '01234567890', 'Santander', '010', 10);
+(1, 'jose.silva@example.com', '1134567890', 'José Silva', '12345678901', 'Banco do Brasil', '001', 1),
+(2, 'maria.souza@example.com', '1145678901', 'Maria Souza', '23456789012', 'Bradesco', '002', 2),
+(3, 'joao.pereira@example.com', '1156789012', 'João Pereira', '34567890123', 'Itaú', '003', 3),
+(4, 'ana.lima@example.com', '1167890123', 'Ana Lima', '45678901234', 'Santander', '004', 4),
+(5, 'carlos.oliveira@example.com', '1178901234', 'Carlos Oliveira', '56789012345', 'Caixa Econômica Federal', '005', 5),
+(6, 'lucas.martins@example.com', '1189012345', 'Lucas Martins', '67890123456', 'HSBC', '006', 6),
+(7, 'patricia.almeida@example.com', '1190123456', 'Patrícia Almeida', '78901234567', 'Banco do Brasil', '007', 7),
+(8, 'fernando.rodrigues@example.com', '1101234567', 'Fernando Rodrigues', '89012345678', 'Bradesco', '008', 8),
+(9, 'juliana.gomes@example.com', '1112345678', 'Juliana Gomes', '90123456789', 'Itaú', '009', 9),
+(10, 'ricardo.santos@example.com', '1123456789', 'Ricardo Santos', '01234567890', 'Santander', '010', 10);
 
 --
 -- Índices para tabelas despejadas
